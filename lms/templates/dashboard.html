@@ -101,6 +101,22 @@ from student.models import CourseEnrollment
   % endif
 </%block>
 
+<div class="subheader">
+  <div class="breadcrumbs">
+      <ul class="breadcrumbs__list">
+          <li class="breadcrumbs__item">You are here:</li>
+
+          <li class="breadcrumbs__item">
+            <span class="active">Dashboard</span>
+        </li>
+      </ul>
+  </div>
+
+  <div class="subheader__container">
+      <h1 style="font-weight: bolder; text-align: left;" class="subheader__title">Dashboard</h1>
+  </div>
+</div>
+
 <div class="dashboard-notifications" tabindex="-1">
 
     %if banner_account_activation_message:

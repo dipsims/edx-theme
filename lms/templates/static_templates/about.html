@@ -4,11 +4,27 @@
 
 <%block name="pagetitle">${_("About")}</%block>
 
-<main id="main" aria-label="Content" tabindex="-1">
+<div class="subheader">
+    <div class="breadcrumbs">
+        <ul class="breadcrumbs__list">
+            <li class="breadcrumbs__item">You are here:</li>
+
+            <li class="breadcrumbs__item">
+                <a href="/">Home</a>
+            </li>
+
+            <li class="breadcrumbs__item">
+                <span class="active">About Us</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="subheader__container">
+        <h1 style="font-weight: bolder; text-align: left;" class="subheader__title"><%block name="pageheader">${page_header or _("About")}</%block></h1>
+    </div>
+</div>
+<main id="main" aria-label="Content" tabindex="-1" style="min-height: 200px;">
     <section class="container about">
-        <h1>
-            <%block name="pageheader">${page_header or _("About")}</%block>
-        </h1>
         <p>
             <%block name="pagecontent">${page_content or _("This page left intentionally blank. Feel free to add your own content.")}</%block>
         </p>

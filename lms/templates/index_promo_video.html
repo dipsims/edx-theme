@@ -1,6 +1,51 @@
 <%page expression_filter="h"/>
 
-% if show_homepage_promo_video:
+% if show_homepage_promo_video or True:
+<style>
+  .home > header .media .hero {
+    background: url("http://i.ytimg.com/vi/a-s9uNj3caM/0.jpg") no-repeat scroll center center;
+    height: 150px;
+    width: 150px;
+}
+
+/*
+ *
+ * Standard set of overrides on the landing page to compensate for some crufty HTML
+ * structure to make the main focus area of the homepage in
+ *
+ */
+.home > header .outer-wrapper {
+  display: table;
+  min-width: 690px;
+  max-width: 700px;
+  padding-top: 120px;
+  padding-bottom: 130px;
+}
+
+.home > header .outer-wrapper:after {
+  height: 100%;
+}
+
+.home > header .title > hgroup {
+  width: 100%;
+}
+
+.home > header .title {
+  float: none;
+  display: table-cell;
+  width: 500px;
+}
+
+.home > header .media {
+  float: none;
+  display: table-cell;
+  width: 155px;
+}
+
+.home > header .title > hgroup > img {
+    padding-top: 5px;
+}
+</style>
   <a href="#video-modal" class="media" rel="leanModal">
     <div class="hero">
       <div class="play-intro"></div>

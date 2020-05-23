@@ -58,6 +58,30 @@ from six import string_types
 
 <%block name="pagetitle">${course.display_name_with_default}</%block>
 
+<div class="subheader">
+  <div class="breadcrumbs">
+      <ul class="breadcrumbs__list">
+          <li class="breadcrumbs__item">You are here:</li>
+
+          <li class="breadcrumbs__item">
+              <a href="/">Home</a>
+          </li>
+
+          <li class="breadcrumbs__item">
+            <a href="/courses">Courses</a>
+          </li>
+
+          <li class="breadcrumbs__item">
+            <span class="active">${course.display_name_with_default}</span>
+        </li>
+      </ul>
+  </div>
+
+  <div class="subheader__container">
+      <h1 style="font-weight: bolder; text-align: left;" class="subheader__title">${course.display_name_with_default}</h1>
+  </div>
+</div>
+
 <section class="course-info">
 
   <%block name="course_about_header">

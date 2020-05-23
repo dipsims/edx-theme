@@ -55,7 +55,18 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
             % if should_display_shopping_cart_func() and not (course and static.is_request_in_themed_site()): # see shoppingcart.context_processor.user_has_cart_context_processor
             <a href="${reverse('shoppingcart.views.show_cart')}" class="user-login__btn user-login__btn--sign-up"><span class="icon fa fa-shopping-cart" aria-hidden="true"></span> ${_("Shopping Cart")}</a>
             % endif
-            <a href="${help_link}" class="user-login__btn user-login__btn--sign-up"><span class="icon fa fa-question-circle" aria-hidden="true"></span> ${_("Help")}</a>
+            % if show_dashboard_tabs:
+              <a href="${reverse('dashboard')}" class="user-login__btn user-login__btn--sign-up"><span class="icon fa fa-rocket" aria-hidden="true"></span> ${_("Courses")}</a>
+              % if show_program_listing:
+              <a href="${reverse('program_listing_view')}" class="user-login__btn user-login__btn--sign-up"><span class="icon fa fa-tasks" aria-hidden="true"></span> ${_("Programs")}</a>              
+              % endif
+            % endif
+            % if show_explore_courses:
+            <a href="${marketing_link('COURSES')}" class="user-login__btn user-login__btn--sign-up"><span class="icon fa fa-wpexplorer" aria-hidden="true"></span> ${_("Discover New")}</a>
+            % endif
+            % if show_sysadmin_dashboard:
+            <a href="${reverse('sysadmin')}" class="user-login__btn user-login__btn--sign-up"><span class="icon fa fa-superpowers" aria-hidden="true"></span> ${_("Sysadmin")}</a>
+            % endif
         </div>
       </li>
     % endif
