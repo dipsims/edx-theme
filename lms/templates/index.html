@@ -8,7 +8,29 @@ from django.urls import reverse
 from openedx.core.djangolib.markup import HTML, Text
 %>
 
-<main id="main" aria-label="Content" tabindex="-1">
+<!-- <main id="main" aria-label="Content" tabindex="-1"> -->
+  <div class="homepage">
+<div class="hero-intro"
+style="background-image: url('http://demo.richie.education/media/filer_public_thumbnails/filer_public/19/d4/19d4d889-aa21-4bd2-b348-5a59844429b4/banner2.jpg__1400x800_q85_crop-%2C0_subsampling-2.jpg');"
+>
+    <div class="hero-intro__inner" style="padding: 0px;">
+        <div class="hero-intro__body" style="padding-top: 10rem;">
+            <h1 class="hero-intro__title" style="width: 80%;text-align: left;">
+                Welcome to ITF Learning
+            </h1>
+            <div class="hero-intro__content">
+              Join over 500,000 young people across Nigeria we have trained on various life changing skills
+                <div class="hero-intro__search">
+                    <p class="hero-intro__search-title">
+                      Enroll into any of our courses and upgrade your skills to fit into a post COVID-19 economy
+                    </p>
+                </div>
+            </div>
+            <a class="hero-intro__cta" href="/courses"> Explore Courses</a> or <a class="hero-intro__cta" href="/register">Get Started</a>
+        </div>
+    </div>
+</div>
+
     <section class="home">
       <header>
         <div class="outer-wrapper">
@@ -57,8 +79,8 @@ from openedx.core.djangolib.markup import HTML, Text
       <%include file="${courses_list}" />
 
     </section>
-</main>
-
+  </div>
+<!-- </main> -->
 % if show_homepage_promo_video or True:
   <section id="video-modal" class="modal home-page-video-modal video-modal">
     <div class="inner-wrapper">

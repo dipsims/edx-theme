@@ -50,9 +50,9 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     % endif
 
     % if section == "secondary":
-      <li class="topbar__item topbar__item--login richie-react richie-react--user-login" data-props='{"loginUrl": "/login${login_query()}", "logoutUrl": "/fr/accounts/logout/", "signupUrl": "/register${login_query()}"}'>
-        <!--
+      <li class="topbar__item topbar__item--login">
         <div class="user-login">
+          <!--
             % if should_display_shopping_cart_func() and not (course and static.is_request_in_themed_site()): # see shoppingcart.context_processor.user_has_cart_context_processor
             <a href="${reverse('shoppingcart.views.show_cart')}" class="user-login__btn user-login__btn--sign-up"><span class="icon fa fa-shopping-cart" aria-hidden="true"></span> ${_("Shopping Cart")}</a>
             % endif
@@ -69,7 +69,9 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
             <a href="${reverse('sysadmin')}" class="user-login__btn user-login__btn--sign-up"><span class="icon fa fa-superpowers" aria-hidden="true"></span> ${_("Sysadmin")}</a>
             % endif
         -->
-            <a href="/logout" class="user-login__btn user-login__btn--sign-up"><span class="icon fa fa-superpowers" aria-hidden="true"></span> Logout</a>
+          <a href="${reverse('dashboard')}" class="btn btn-primary">${_("Dashboard")}</a>
+          
+          <a href="/logout" class="user-login__btn user-login__btn--sign-up"><span class="icon fa fa-superpowers" aria-hidden="true"></span> Logout</a>
         </div>
       </li>
     % endif

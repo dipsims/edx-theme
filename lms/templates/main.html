@@ -34,7 +34,6 @@ from pipeline_mako import render_require_js_path_overrides
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="${static.url('dipsims/css/style-red.css')}">
 ## Define a couple of helper functions to make life easier when
 ## embedding theme conditionals into templates. All inheriting
 ## templates have access to these functions, and we can import these
@@ -167,10 +166,11 @@ from pipeline_mako import render_require_js_path_overrides
         branch.init('${branch_key | n, js_escaped_string}');
     </script>
 % endif
+<link rel="stylesheet" type="text/css" href="${static.url('dipsims/css/style-red-beautify.css')}">
 </head>
 
-<body class="${static.dir_rtl()} <%block name='bodyclass'/> lang_${LANGUAGE_CODE}">
-
+<body class="${static.dir_rtl()} <%block name='bodyclass'/> lang_${LANGUAGE_CODE} ">
+<div id="modal-exclude">
 <%static:optional_include_mako file="body-initial.html" is_theming_enabled="True" />
 <div id="page-prompt"></div>
 <!--
@@ -179,7 +179,7 @@ from pipeline_mako import render_require_js_path_overrides
 % endif
 -->
     <%block name="skip_links"/>
-    <a class="nav-skip sr-only sr-only-focusable" href="#main">${_("Skip to main content")}</a>
+    <a class="nav-skip sr-only sr-only-focusable" href="#content">${_("Skip to main content")}</a>
 
     % if not disable_header:
         <%include file="${static.get_template_path('header.html')}" args="online_help_token=online_help_token" />
@@ -196,79 +196,21 @@ from pipeline_mako import render_require_js_path_overrides
     <div class="marketing-hero"><%block name="marketing_hero"></%block></div>
 
     <!-- <div class="content-wrapper main-container" id="content" dir="${static.dir_rtl()}"> -->
-    <div class="body-content" id="content" dir="${static.dir_rtl()}">
+    <div class="body-content" id="content" dir="${static.dir_rtl()}" style="min-height: 600px;">
+      <div class="subheader">            
+      </div>
       ${self.body()}
       <%block name="bodyextra"/>
     </div>
-
     % if not disable_footer:
-  <!--
         <%include file="${static.get_template_path('footer.html')}" />
-  -->
-  <div class="body-footer">
-    <div class="body-footer__container">
-        <div class="body-footer__menu">
-            <p class="body-footer__subtitle">Learn more</p>
-            <div class="nested-default">
-              <div class="nested-default__items">
-                <div class="nested-default">
-                  <div class="nested-default__items"><a href="/about">About</a>
-                  </div>
-                </div>
-                <div class="nested-default">
-                  <div class="nested-default__content"><p>Learning Communities</p></div><div class="nested-default__items"><a href="http://itf.gov.ng">Website</a></div>
-                </div>
-              </div>
-            </div>
-        </div>
-        <div class="body-footer__brand">
-            <a href="/">
-              <img src="${branding_api.get_logo_url(is_secure)}" class="logo" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}" />
-            </a>
-        </div>
-        <div class="body-footer__insert">
-            <p class="body-footer__title">ITF Learning</p>
-            <ul class="languages-menu"><li class="languages-menu__item languages-menu__item--label">Language:</li><li class="languages-menu__item languages-menu__item--en languages-menu__item--active"><a class="languages-menu__link" href="/en/"
-        title="en, currently in English">
-        English
-    </a></li></ul>
-  
-            <div class="body-footer__badges">
-                <a
-  href="https://www.facebook.com/itfniger"
-  class="body-footer__badge"
-  target="_blank"
-  ><svg role="img"><title>Facebook</title><use xlink:href="${static.url('dipsims/images/facebook.svg')}#icon-facebook"></use></svg></a><a
-  href="https://twitter.com/@ITFNigeria"
-  class="body-footer__badge"
-  target="_blank"
-  title="Twitter page"
-  ><svg role="img"><title>Twitter</title><use xlink:href="${static.url('dipsims/images/twitter.svg')}#icon-twitter" /></svg></a>
-  
-            </div>
-        </div>
-    </div>
-  </div>
-  <div class="body-mentions">
-    <div class="body-mentions__container">
-        <div class="body-mentions__copyright">
-            <p>2020 &copy; Industrial Training Fund (ITF). All Rights Reserved.</p>
-        </div>
-        <div class="body-mentions__poweredby">
-            <a href="https://open.edx.org/">
-                <small>Powered by</small>
-                <strong>OpenedX</strong>
-            </a>
-        </div>
-    </div>
-  </div>
-  </div>
     % endif
 <!--
 % if not disable_window_wrap:
   </div>
 % endif
 -->
+</div>
   <%block name="footer_extra"/>
   <%block name="js_extra"/>
 
