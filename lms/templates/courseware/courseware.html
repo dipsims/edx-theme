@@ -6,7 +6,7 @@
 import six
 import waffle
 
-from django.conf import settings
+from django.conf import settings 
 from django.urls import reverse
 from django.utils.translation import ugettext as _
 
@@ -115,6 +115,26 @@ from openedx.features.course_experience import course_home_page_title, COURSE_OU
 ${HTML(fragment.foot_html())}
 
 </%block>
+
+<div class="subheader">
+  <div class="breadcrumbs">
+      <ul class="breadcrumbs__list">
+          <li class="breadcrumbs__item">You are here:</li>
+
+          <li class="breadcrumbs__item">
+              <a href="/dashboard">Dashboard</a>
+          </li>
+
+          <li class="breadcrumbs__item">
+              <span class="active">${course.display_name_with_default}</span>
+          </li>
+      </ul>
+  </div>
+
+  <div class="subheader__container">
+      <h1 style="font-weight: bolder; text-align: left;" class="subheader__title">${course.display_name_with_default}</h1>
+  </div>
+</div>
 
 <div class="message-banner" aria-live="polite"></div>
 
